@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>login</title>
+{#    <link rel="stylesheet" type="text/css" href="/static/css/normalize.css" />#}
+{#    <link rel="stylesheet" type="text/css" href="/static/css/demo.css" />#}
+		<script src="/static/js/jquery-3.1.0.min.js"></script>
+        <script src="/static/js/login.js"></script>
+    <!--必要样式-->
+    <link rel="stylesheet" type="text/css" href="/static/css/component.css" />
+
+<!--[if IE]>
+<script src="/static/js/star/html5.js"></script>
+<![endif]-->
+</head>
+<body>
+	<div class="container demo-1">
+		<div class="content">
+			<div id="large-header" class="large-header">
+				<canvas id="demo-canvas"></canvas>
+				<div class="logo_box">
+					<p class="h1">室  温  监  测</p>
+					<form  id="id_form">
+						<div class="input_outer">
+							<span class="u_user"></span>
+							<input id="id_username" name="username" class="text" required style="color: #FFFFFF !important" type="text" placeholder="请输入账户">
+						</div>
+						<span  id="error_pass" style="color: red"></span>
+                        <div class="input_outer">
+							<span class="us_uer"></span>
+							<input id="id_password" name="password" class="text"  required style="color: #FFFFFF !important; position:absolute; z-index:100;" value="" type="password" placeholder="请输入密码">
+						</div>
+                        <span  id="error_code" style="color: red"></span>
+                        <div class="input_outer-code">
+							<span class="uc_uer"></span>
+							<input id="id_check_code" name="checkcode" class="text-code" required pattern="\w{4}" style="color: #FFFFFF !important; position:absolute; z-index:100;" value="" type="text" placeholder="请输入验证码">
+                            <img class="logimg" src="{% url "check_code" %}" onclick="ChangeCode(this);"/>
+						</div>
+
+                        {% csrf_token %}
+						<div class="mb2"><input type="submit" class="act-sub" style="color: #FFFFFF !important; position:absolute; z-index:100;" value="登录"></div>
+{#						<div class="mb2"><a class="act-but submit" href="" style="color: #FFFFFF">登录</a></div>#}
+                    </form>
+                    <div class="bottom-menu">
+                        <a class="reg" style="color: #FFFFFF" href="{% url "register" %}">注 册</a>
+                        <a class="repwd" style="color: #FFFFFF" href="{% url "password_reset" %}">忘记密码</a>
+                    </div>
+
+				</div>
+			</div>
+		</div>
+	</div><!-- /container -->
+
+	<script src="/static/js/star/TweenLite.min.js"></script>    <script src="/static/js/star/EasePack.min.js"></script>
+    <script src="/static/js/star/rAF.js"></script>
+    <script src="/static/js/star/demo-1.js"></script>
+</body>
+</html>
+
+

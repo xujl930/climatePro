@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+    <div class="main">
+        <div class="left"></div>
+        <div class="right"></div>
+
+    <h1>Welcome to Dashboard</h1>
+    <p>You can <a href="{% url "edit" %}">edit
+        your profile</a> or <a href="{% url "password_change" %}">change password</a> or <a href="{% url "add_dev" %}">add device</a>.</p>
+
+    <div>
+         {% if dev_dic %}
+             <table>
+                <tr>
+                 <td><span>设备列表:</span></td>
+                    <td><select id="select-dev" onchange="getTerminal()">
+                        {% for k,v in dev_dic.items %}
+                            <option>{{ k }}</option>
+                            <option hidden id={{ k }}>{{ v }}</option>
+                        {% endfor %}</select>
+                    </td>
+                    <td><input type="text" readonly id="select-date" value="" onclick="return Calendar('select-date')"></td>
+                    <td><input type="button" onclick="getTerminal()" value="查询"></td>
+                </tr>
+             </table>
+{#             <p><span>设备列表:</span>#}
+{#             <select id="select-dev" onchange="getTerminal()">#}
+{#                {% for k,v in dev_dic.items %}#}
+{#                    <option>{{ k }}</option>#}
+{#                    <option hidden id={{ k }}>{{ v }}</option>#}
+{#                {% endfor %}#}
+{#             </select>#}
+{##}
+{#             <select id="select-date" onchange="getDate()"></select>#}
+{#                <script>initDate()</script>#}
+{#             <input type="text" id="time" value="选择时间" onclick="return Calendar('time');">#}
+{#             </p>#}
+{#             <div>#}
+{##}
+{#                <input type="text" id="time" value="选择时间" onclick="return Calendar('time');">#}
+{#            </div>#}
+             <div id="climate-content">
+                <table id="climate-tb" bgcolor="aqua" width="" border="1" align="left" cellpadding="1">
+                    <thead id="climate-head"></thead>
+                    <tbody id="climate-body"></tbody>
+                </table>
+            </div>
+             {% else %}
+                 <p>您还没有设备,是否要<a href="{% url "add_dev" %}">添加</a></p>
+         {% endif %}
+    </div>
+
+    <div data-width="25%" data-background-color="red">
+
+    </div>
+{% endblock %}
+</div>
